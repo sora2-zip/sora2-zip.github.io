@@ -157,7 +157,7 @@ npx shadcn-ui@latest add badge
 ```
 NEXT_PUBLIC_SITE_URL=https://your-portfolio.com
 ```
-
+<!-- 
 ### Analytics 추가 (선택사항)
 
 Google Analytics나 다른 분석 도구를 추가하려면 `src/app/layout.tsx`에 스크립트를 추가합니다.
@@ -171,11 +171,11 @@ Google Analytics나 다른 분석 도구를 추가하려면 `src/app/layout.tsx`
 - [ ] 소셜 링크 (GitHub, LinkedIn) 추가
 - [ ] 로컬에서 빌드 테스트
 - [ ] Vercel/호스팅 배포
-- [ ] 도메인 연결 (옵션)
+- [ ] 도메인 연결 (옵션) -->
 
 ## 📞 연락처
 
-- Email: 2sora71@gmail.com
+- Email: sora2.zip@gmail.com
 - Phone: 010-4000-7968
 - Location: 경기 포천시
 
