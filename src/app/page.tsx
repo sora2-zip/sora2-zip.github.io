@@ -1,15 +1,19 @@
 'use client'
+/* eslint-disable @next/next/no-img-element */
 
+import { useState } from 'react'
 import { Button } from '../components/ui/button'
 import { Card } from '../components/ui/card'
 import { Badge } from '../components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs'
-import { Mail, ExternalLink, ChevronDown } from 'lucide-react'
+import * as Dialog from '@radix-ui/react-dialog'
+import { Mail, ExternalLink, ChevronDown, X, ChevronLeft, ChevronRight } from 'lucide-react'
+
 
 const SKILLS = {
-  frontend: ['React.js', 'Vue.js', 'TypeScript', 'JavaScript (ES5+)', 'HTML5', 'CSS3/SCSS'],
+  frontend: ['React.js', 'Vue.js', 'JavaScript (ES5+)', 'HTML5', 'CSS3/SCSS'],
   styling: ['Tailwind CSS', 'CSS Modules', 'styled-components', 'shadcn/ui'],
-  tools: ['Git/GitLab', 'Figma', 'Jenkins', 'Webpack', 'Vite'],
+  tools: ['Git/GitLab', 'Figma', 'Jenkins', 'Zeplin', 'FTP'],
   design: ['Photoshop', 'UI/UX', '반응형 웹', '크로스 브라우징']
 }
 
@@ -20,7 +24,11 @@ const PROJECTS = [
     company: '더이앤엠주식회사',
     description: '사용자 경험 개선을 위한 메인 페이지 리뉴얼, 반응형 레이아웃 구현 및 크로스 브라우징 대응',
     tech: ['React.js', 'Tailwind CSS'],
-    impact: '플랫폼 전체 사용자 경험 향상'
+    images: [
+      // 'https://images.unsplash.com/photo-1522204502355-30e4b6b58a50?auto=format&fit=crop&w=1200&q=80',
+      // 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80',
+    ],
+    // impact: '플랫폼 전체 사용자 경험 향상'
   },
   {
     title: '에이전트 관리 어드민 개발',
@@ -28,15 +36,39 @@ const PROJECTS = [
     company: '더이앤엠주식회사',
     description: '신규 백오피스 시스템 UI/UX 구현 및 반응형 디자인 적용',
     tech: ['React.js', 'Tailwind CSS', 'shadcn/ui'],
-    impact: '관리자 업무 효율성 30% 증대'
+    images: [
+      // 'https://images.unsplash.com/photo-1522204502355-30e4b6b58a50?auto=format&fit=crop&w=1200&q=80',
+    ],
+    // impact: '관리자 업무 효율성 30% 증대'
   },
   {
     title: '코인 관련 시스템 리뉴얼',
     period: '2025.07 ~ 2025.12',
     company: '더이앤엠주식회사',
     description: '사용자 편의성 개선을 위한 UI 재설계, 인터랙션 효과 추가로 사용성 향상',
-    tech: ['React.js', 'CSS3', 'JavaScript', 'html5'],
-    impact: '사용자 만족도 42% 향상'
+    tech: ['React.js', 'CSS3', 'JavaScript', 'HTML5', 'FTP'],
+    images: ['/images/work/renewal-coin.png'],
+    // impact: '사용자 만족도 42% 향상'
+  },
+  {
+    title: '월간 이벤트 페이지 개발',
+    period: '2025.01 ~ 현재',
+    company: '더이앤엠주식회사',
+    description: '매월 진행되는 프로모션 이벤트 페이지 퍼블리싱',
+    tech: ['React.js', 'Tailwind CSS'],
+    images: ['/images/work/event-monthly-01.png', '/images/work/event-monthly-02.png'],
+    // impact: '사용자 만족도 42% 향상'
+  },
+  {
+    title: '슈퍼브이 서비스 (Website))',
+    period: '2022.04 ~ 2024.04',
+    company: '그로비교육',
+    description: '홈페이지 및 프로모션 페이지 마크업 및 유지보수',
+    tech: ['HTML5', 'CSS3'],
+    images: [
+      '/images/work/project1-1.png',
+    ],
+    // impact: '월 활성 사용자 5만명 이상'
   },
   {
     title: '슈퍼브이 서비스 (Tablet)',
@@ -44,7 +76,32 @@ const PROJECTS = [
     company: '그로비교육',
     description: 'Vue.js 기반 개인화 학습 관리 웹뷰 페이지 개발, 학생용 대시보드 UI 구현',
     tech: ['Vue.js', 'HTML5', 'CSS3/SCSS', 'Chart.js'],
-    impact: '월 활성 사용자 5만명 이상'
+    images: [
+      '/images/work/project1-2.png',
+    ],
+    // impact: '월 활성 사용자 5만명 이상'
+  },
+  {
+    title: '전자도서관 서비스 (Website))',
+    period: '2018.05 ~ 2020.02',
+    company: '이퓨쳐',
+    description: '국내 기관(ex. 강원도 교육청)과 해외 수출용 등 제공에 따라 다른 UI 구현',
+    tech: ['HTML5', 'CSS3', 'jQuery', 'chart.js'],
+    images: [
+      '/images/work/project2-1.png',
+      '/images/work/project2-2.png',
+      '/images/work/project2-5.png'
+    ],
+    // impact: '월 활성 사용자 5만명 이상'
+  },
+  {
+    title: '이퓨쳐 앱 서비스 (App)',
+    period: '2018.03 ~ 2021.11',
+    company: '이퓨쳐',
+    description: '교재에 따라 제공되는 앱 서비스, 리소스 제작 및 유지보수',
+    tech: ['HTML5', 'CSS3', 'jQuery'],
+    images: ['/images/work/project3-1.png', '/images/work/project3-2.png'],
+    // impact: '월 활성 사용자 5만명 이상'
   }
 ]
 
@@ -53,7 +110,7 @@ const EXPERIENCE = [
     role: '기술개발본부 연구원 팀원',
     company: '더이앤엠주식회사',
     period: '2025.01 ~ 재직중',
-    duration: '약 7개월',
+    duration: '약 17개월',
     highlights: [
       '플랫폼 웹/앱 서비스 UI 개발 및 유지보수',
       '월간 이벤트 페이지 마크업 및 기능 구현',
@@ -85,6 +142,9 @@ const EXPERIENCE = [
 ]
 
 export default function Portfolio() {
+  const [selectedProject, setSelectedProject] = useState<typeof PROJECTS[number] | null>(null)
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0)
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     element?.scrollIntoView({ behavior: 'smooth' })
@@ -113,7 +173,7 @@ export default function Portfolio() {
           </div>
           <div className="flex gap-4">
             <Button variant="ghost" size="icon" asChild>
-              <a href="mailto:2sora71@gmail.com">
+              <a href="mailto:sora2.zip@gmail.com">
                 <Mail className="h-5 w-5" />
               </a>
             </Button>
@@ -136,7 +196,7 @@ export default function Portfolio() {
           </span>
         </h1>
         <p className="mx-auto mb-8 max-w-3xl text-lg leading-8 text-slate-600">
-          7년 이상의 경험으로 사용자 중심의 웹 인터페이스를 설계하고 구현합니다.
+          7년 이상의 경험으로 사용자 중심의 웹 인터페이스를 설계하고 구현합니다.<br />
           React, Vue.js, TypeScript를 활용한 현대적인 웹 개발을 전문으로 합니다.
         </p>
         <div className="mx-auto mb-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -235,7 +295,25 @@ export default function Portfolio() {
                   <p className="font-medium text-slate-600">{project.company}</p>
                   <p className="mt-2 text-sm text-slate-500">{project.period}</p>
                 </div>
-                <ExternalLink className="h-5 w-5 shrink-0 text-slate-400" />
+              <div className="flex flex-wrap items-center gap-3">
+                {project.images?.length ? (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedProject(project)
+                      setSelectedImageIndex(0)
+                    }}
+                    className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+                  >
+                    <ExternalLink className="h-4 w-4 text-slate-500" />
+                    이미지 보기
+                  </button>
+                ) : (
+                  <div className="rounded-full border border-rose-200 bg-rose-50 px-4 py-2 text-sm font-semibold text-rose-700">
+                    디자인 외부 공개 불가
+                  </div>
+                )}
+              </div>
               </div>
               <p className="mb-4 leading-7 text-slate-600">{project.description}</p>
               <div className="mb-4 flex flex-wrap gap-2">
@@ -243,9 +321,9 @@ export default function Portfolio() {
                   <Badge key={tidx} variant="secondary">{t}</Badge>
                 ))}
               </div>
-              <div className="border-t border-slate-200 pt-4">
+              {/* <div className="border-t border-slate-200 pt-4">
                 <p className="text-sm font-medium text-sky-600">💡 {project.impact}</p>
-              </div>
+              </div> */}
             </Card>
           ))}
         </div>
@@ -303,6 +381,73 @@ export default function Portfolio() {
           </TabsContent>
         </Tabs>
       </section>
+
+      <Dialog.Root open={Boolean(selectedProject)} onOpenChange={(open) => { if (!open) setSelectedProject(null) }}>
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm" />
+          <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-[min(95vw,44rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-3xl bg-white p-6 shadow-2xl focus:outline-none">
+            {selectedProject && (
+              <>
+                <div className="mb-4 flex items-start justify-between gap-4">
+                  <div>
+                    <Dialog.Title className="text-xl font-semibold text-slate-900">{selectedProject.title}</Dialog.Title>
+                    <Dialog.Description className="mt-2 text-sm text-slate-600">{selectedProject.company}</Dialog.Description>
+                  </div>
+                  <Dialog.Close className=" px-3 py-1">
+                    <X className="h-4 w-4" />
+                  </Dialog.Close>
+                </div>
+                <div className="overflow-hidden rounded-[2rem] bg-slate-100">
+                  {selectedProject.images?.length ? (
+                    <img
+                      src={selectedProject.images[selectedImageIndex]}
+                      alt={`${selectedProject.title} ${selectedImageIndex + 1}`}
+                      className="h-[min(60vh,32rem)] w-full object-contain"
+                    />
+                  ) : (
+                    <div className="flex h-[min(60vh,32rem)] items-center justify-center px-6 py-10 text-center text-sm text-slate-600">
+                      이 작업물 이미지는 외부에 공개할 수 없습니다.
+                    </div>
+                  )}
+                </div>
+                {selectedProject.images?.length > 1 && (
+                  <div className="mt-4 flex items-center justify-between gap-4">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedImageIndex((prev) => Math.max(prev - 1, 0))}
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
+                      disabled={selectedImageIndex === 0}
+                    >
+                      <ChevronLeft className="h-4 w-4" />
+                    </button>
+                    <p className="text-sm text-slate-600">
+                      {selectedImageIndex + 1} / {selectedProject.images.length}
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setSelectedImageIndex((prev) =>
+                          Math.min(prev + 1, selectedProject.images.length - 1)
+                        )
+                      }
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
+                      disabled={selectedImageIndex === selectedProject.images.length - 1}
+                    >
+                      <ChevronRight className="h-4 w-4" />
+                    </button>
+                  </div>
+                )}
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {selectedProject.tech.map((tech, idx) => (
+                    <Badge key={idx} variant="secondary">{tech}</Badge>
+                  ))}
+                </div>
+                <p className="mt-4 text-sm leading-7 text-slate-600">{selectedProject.description}</p>
+              </>
+            )}
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
 
       {/* Contact Section */}
       <section className="mx-auto max-w-5xl border-t border-slate-200 px-6 py-20 text-center">
