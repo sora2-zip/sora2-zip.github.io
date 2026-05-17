@@ -60,7 +60,7 @@ const PROJECTS = [
     // impact: '사용자 만족도 42% 향상'
   },
   {
-    title: '슈퍼브이 서비스 (Website))',
+    title: '슈퍼브이 서비스 (Website)',
     period: '2022.04 ~ 2024.04',
     company: '그로비교육',
     description: '홈페이지 및 프로모션 페이지 마크업 및 유지보수',
@@ -82,7 +82,7 @@ const PROJECTS = [
     // impact: '월 활성 사용자 5만명 이상'
   },
   {
-    title: '전자도서관 서비스 (Website))',
+    title: '전자도서관 서비스 (Website)',
     period: '2018.05 ~ 2020.02',
     company: '이퓨쳐',
     description: '국내 기관(ex. 강원도 교육청)과 해외 수출용 등 제공에 따라 다른 UI 구현',
