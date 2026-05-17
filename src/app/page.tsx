@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import { Button } from '../components/ui/button'
 import { Card } from '../components/ui/card'
 import { Badge } from '../components/ui/badge'
@@ -92,17 +91,18 @@ export default function Portfolio() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: 'linear-gradient(to bottom right, rgb(248 250 252), rgb(255 255 255), rgb(248 250 252))' }}>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50">
       {/* Navigation */}
-      <nav style={{ position: 'sticky', top: 0, zIndex: 50, borderBottom: '1px solid rgba(203, 213, 225, 0.5)', background: 'rgba(255, 255, 255, 0.8)', backdropFilter: 'blur(12px)' }}>
-        <div style={{ maxWidth: '64rem', margin: '0 auto', padding: '1rem 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ fontWeight: 'bold', fontSize: '1.25rem', color: 'rgb(15, 23, 42)' }}>이소라</div>
-          <div style={{ display: 'none', gap: '2rem' }} className="md:flex">
+      <nav className="sticky top-0 z-50 border-b border-slate-200/50 bg-white/80 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+          <div className="text-xl font-bold text-slate-900">이소라</div>
+          <div className="hidden gap-8 md:flex">
             {['about', 'experience', 'projects', 'skills'].map((item) => (
               <button
                 key={item}
+                type="button"
                 onClick={() => scrollToSection(item)}
-                style={{ fontSize: '0.875rem', fontWeight: '500', color: 'rgb(71, 85, 105)', cursor: 'pointer', background: 'none', border: 'none' }}
+                className="text-sm font-medium text-slate-600 transition hover:text-slate-900"
               >
                 {item === 'about' && '소개'}
                 {item === 'experience' && '경력'}
@@ -111,10 +111,10 @@ export default function Portfolio() {
               </button>
             ))}
           </div>
-          <div style={{ display: 'flex', gap: '1rem' }}>
+          <div className="flex gap-4">
             <Button variant="ghost" size="icon" asChild>
               <a href="mailto:2sora71@gmail.com">
-                <Mail style={{ width: '1.25rem', height: '1.25rem' }} />
+                <Mail className="h-5 w-5" />
               </a>
             </Button>
           </div>
@@ -122,70 +122,70 @@ export default function Portfolio() {
       </nav>
 
       {/* Hero Section */}
-      <section style={{ maxWidth: '64rem', margin: '0 auto', padding: '6rem 1.5rem', textAlign: 'center' }}>
-        <div style={{ marginBottom: '2rem', display: 'inline-block' }}>
-          <Badge variant="secondary" style={{ fontSize: '0.875rem' }}>
+      <section className="mx-auto max-w-5xl px-6 py-24 text-center">
+        <div className="mb-8 inline-block">
+          <Badge variant="secondary" className="text-sm">
             Web Publisher & Frontend Developer
           </Badge>
         </div>
-        <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(2rem, 8vw, 3.75rem)', fontWeight: 'bold', color: 'rgb(15, 23, 42)' }}>
+        <h1 className="mb-6 text-5xl font-bold leading-tight text-slate-900 sm:text-6xl md:text-7xl">
           디자인을 정확하게
           <br />
-          <span style={{ background: 'linear-gradient(to right, rgb(37, 99, 235), rgb(6, 182, 212))', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent' }}>
+          <span className="bg-gradient-to-r from-sky-700 via-cyan-500 to-cyan-400 bg-clip-text text-transparent">
             구현하는 개발자
           </span>
         </h1>
-        <p style={{ maxWidth: '42rem', margin: '0 auto 2rem', fontSize: '1.125rem', color: 'rgb(71, 85, 105)', lineHeight: '1.75' }}>
+        <p className="mx-auto mb-8 max-w-3xl text-lg leading-8 text-slate-600">
           7년 이상의 경험으로 사용자 중심의 웹 인터페이스를 설계하고 구현합니다.
           React, Vue.js, TypeScript를 활용한 현대적인 웹 개발을 전문으로 합니다.
         </p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', justifyContent: 'center', marginBottom: '2rem' }}>
-          <Button size="lg" onClick={() => scrollToSection('projects')} style={{ width: '100%', maxWidth: '15rem' }}>
+        <div className="mx-auto mb-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <Button size="lg" onClick={() => scrollToSection('projects')} className="w-full max-w-[15rem]">
             프로젝트 보기
           </Button>
-          <Button size="lg" variant="outline" asChild style={{ width: '100%', maxWidth: '15rem' }}>
-            <a href="mailto:2sora71@gmail.com">
-              <Mail style={{ marginRight: '0.5rem', width: '1rem', height: '1rem' }} />
+          <Button size="lg" variant="outline" asChild className="w-full max-w-[15rem]">
+            <a href="mailto:2sora71@gmail.com" className="inline-flex items-center justify-center gap-2">
+              <Mail className="h-4 w-4" />
               이메일 문의
             </a>
           </Button>
         </div>
 
         {/* Scroll indicator */}
-        <div style={{ marginTop: '4rem', display: 'flex', justifyContent: 'center', animation: 'bounce 2s infinite' }}>
-          <ChevronDown style={{ width: '1.5rem', height: '1.5rem', color: 'rgb(148, 163, 184)' }} />
+        <div className="mt-16 flex justify-center animate-bounce">
+          <ChevronDown className="h-6 w-6 text-slate-400" />
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" style={{ maxWidth: '64rem', margin: '0 auto', padding: '5rem 1.5rem', borderTop: '1px solid rgb(226, 232, 240)' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '3rem', alignItems: 'center' }}>
+      <section id="about" className="mx-auto max-w-5xl border-t border-slate-200 px-6 py-20">
+        <div className="grid gap-12 md:grid-cols-2 items-center">
           <div>
-            <h2 style={{ fontSize: '1.875rem', fontWeight: 'bold', color: 'rgb(15, 23, 42)', marginBottom: '1.5rem' }}>소개</h2>
-            <p style={{ color: 'rgb(71, 85, 105)', marginBottom: '1rem', lineHeight: '1.75' }}>
+            <h2 className="mb-6 text-3xl font-bold text-slate-900">소개</h2>
+            <p className="mb-4 leading-7 text-slate-600">
               안녕하세요. 웹 퍼블리셔 이소라입니다.
             </p>
-            <p style={{ color: 'rgb(71, 85, 105)', marginBottom: '1rem', lineHeight: '1.75' }}>
+            <p className="mb-4 leading-7 text-slate-600">
               강원대학교 방송영상학과를 졸업했으며, 7년 이상의 웹 개발 경험을 갖고 있습니다.
               플랫폼 UI 개발, 어드민 시스템 구축, 반응형 웹 디자인 등 다양한 프로젝트를 통해
               사용자 중심의 인터페이스 설계 능력을 키워왔습니다.
             </p>
-            <p style={{ color: 'rgb(71, 85, 105)', marginBottom: '1.5rem', lineHeight: '1.75' }}>
+            <p className="mb-6 leading-7 text-slate-600">
               현재 더이앤엠주식회사에서 기술개발본부 연구원으로 근무 중이며,
               최신 기술 스택을 학습하며 끊임없이 성장하고 있습니다.
             </p>
-            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+            <div className="flex flex-wrap gap-3">
               <Badge>성실성</Badge>
               <Badge>꼼꼼함</Badge>
               <Badge>적응성</Badge>
               <Badge>긍정적</Badge>
             </div>
           </div>
-          <div style={{ background: 'linear-gradient(135deg, rgb(219, 234, 254), rgb(164, 243, 250))', borderRadius: '0.5rem', padding: '2rem', height: '20rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '3.75rem', fontWeight: 'bold', color: 'rgb(37, 99, 235)', marginBottom: '1rem' }}>7+</div>
-              <div style={{ fontSize: '1.25rem', fontWeight: '600', color: 'rgb(15, 23, 42)' }}>Years of Experience</div>
-              <div style={{ color: 'rgb(71, 85, 105)', marginTop: '1rem' }}>
+          <div className="flex h-80 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-100 to-cyan-100 p-8">
+            <div className="text-center">
+              <div className="mb-4 text-6xl font-bold text-sky-700">7+</div>
+              <div className="text-xl font-semibold text-slate-900">Years of Experience</div>
+              <div className="mt-4 text-slate-600">
                 <div>5개 회사</div>
                 <div>50+ 프로젝트</div>
               </div>
@@ -195,25 +195,25 @@ export default function Portfolio() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" style={{ maxWidth: '64rem', margin: '0 auto', padding: '5rem 1.5rem', borderTop: '1px solid rgb(226, 232, 240)' }}>
-        <h2 style={{ fontSize: '1.875rem', fontWeight: 'bold', color: 'rgb(15, 23, 42)', marginBottom: '3rem' }}>경력</h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      <section id="experience" className="mx-auto max-w-5xl border-t border-slate-200 px-6 py-20">
+        <h2 className="mb-12 text-3xl font-bold text-slate-900">경력</h2>
+        <div className="flex flex-col gap-6">
           {EXPERIENCE.map((exp, idx) => (
-            <Card key={idx} style={{ padding: '1.5rem' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '2rem', marginBottom: '1rem' }}>
+            <Card key={idx} className="p-6">
+              <div className="mb-4 grid gap-6 md:grid-cols-[1fr_auto]">
                 <div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: '600', color: 'rgb(15, 23, 42)' }}>{exp.role}</h3>
-                  <p style={{ color: 'rgb(37, 99, 235)', fontWeight: '500' }}>{exp.company}</p>
+                  <h3 className="text-xl font-semibold text-slate-900">{exp.role}</h3>
+                  <p className="font-medium text-sky-600">{exp.company}</p>
                 </div>
-                <div style={{ fontSize: '0.875rem', color: 'rgb(71, 85, 105)', textAlign: 'right' }}>
+                <div className="text-right text-sm text-slate-600">
                   <div>{exp.period}</div>
-                  <div style={{ color: 'rgb(100, 116, 139)' }}>{exp.duration}</div>
+                  <div className="text-slate-500">{exp.duration}</div>
                 </div>
               </div>
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <ul className="flex flex-col gap-2">
                 {exp.highlights.map((highlight, hidx) => (
-                  <li key={hidx} style={{ color: 'rgb(71, 85, 105)', display: 'flex', gap: '0.75rem' }}>
-                    <span style={{ color: 'rgb(37, 99, 235)', fontWeight: 'bold' }}>•</span>
+                  <li key={hidx} className="flex gap-3 text-slate-600">
+                    <span className="font-bold text-sky-600">•</span>
                     {highlight}
                   </li>
                 ))}
@@ -224,29 +224,27 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" style={{ maxWidth: '64rem', margin: '0 auto', padding: '5rem 1.5rem', borderTop: '1px solid rgb(226, 232, 240)' }}>
-        <h2 style={{ fontSize: '1.875rem', fontWeight: 'bold', color: 'rgb(15, 23, 42)', marginBottom: '3rem' }}>주요 프로젝트</h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      <section id="projects" className="mx-auto max-w-5xl border-t border-slate-200 px-6 py-20">
+        <h2 className="mb-12 text-3xl font-bold text-slate-900">주요 프로젝트</h2>
+        <div className="flex flex-col gap-6">
           {PROJECTS.map((project, idx) => (
-            <Card key={idx} style={{ padding: '2rem', cursor: 'pointer' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '2rem', marginBottom: '1rem', alignItems: 'start' }}>
+            <Card key={idx} className="cursor-pointer p-8">
+              <div className="mb-4 grid gap-6 md:grid-cols-[1fr_auto] items-start">
                 <div>
-                  <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'rgb(15, 23, 42)', marginBottom: '0.5rem' }}>
-                    {project.title}
-                  </h3>
-                  <p style={{ color: 'rgb(71, 85, 105)', fontWeight: '500' }}>{project.company}</p>
-                  <p style={{ fontSize: '0.875rem', color: 'rgb(100, 116, 139)', marginTop: '0.5rem' }}>{project.period}</p>
+                  <h3 className="mb-2 text-2xl font-bold text-slate-900">{project.title}</h3>
+                  <p className="font-medium text-slate-600">{project.company}</p>
+                  <p className="mt-2 text-sm text-slate-500">{project.period}</p>
                 </div>
-                <ExternalLink style={{ width: '1.25rem', height: '1.25rem', color: 'rgb(148, 163, 184)', flexShrink: 0 }} />
+                <ExternalLink className="h-5 w-5 shrink-0 text-slate-400" />
               </div>
-              <p style={{ color: 'rgb(71, 85, 105)', marginBottom: '1rem', lineHeight: '1.75' }}>{project.description}</p>
-              <div style={{ marginBottom: '1rem', display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+              <p className="mb-4 leading-7 text-slate-600">{project.description}</p>
+              <div className="mb-4 flex flex-wrap gap-2">
                 {project.tech.map((t, tidx) => (
                   <Badge key={tidx} variant="secondary">{t}</Badge>
                 ))}
               </div>
-              <div style={{ paddingTop: '1rem', borderTop: '1px solid rgb(226, 232, 240)' }}>
-                <p style={{ fontSize: '0.875rem', fontWeight: '500', color: 'rgb(37, 99, 235)' }}>💡 {project.impact}</p>
+              <div className="border-t border-slate-200 pt-4">
+                <p className="text-sm font-medium text-sky-600">💡 {project.impact}</p>
               </div>
             </Card>
           ))}
@@ -254,8 +252,8 @@ export default function Portfolio() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" style={{ maxWidth: '64rem', margin: '0 auto', padding: '5rem 1.5rem', borderTop: '1px solid rgb(226, 232, 240)' }}>
-        <h2 style={{ fontSize: '1.875rem', fontWeight: 'bold', color: 'rgb(15, 23, 42)', marginBottom: '3rem' }}>기술 스택</h2>
+      <section id="skills" className="mx-auto max-w-5xl border-t border-slate-200 px-6 py-20">
+        <h2 className="mb-12 text-3xl font-bold text-slate-900">기술 스택</h2>
         <Tabs defaultValue="frontend" className="w-full">
           <TabsList className="grid w-full grid-cols-1 gap-2 mb-8 sm:grid-cols-4">
             <TabsTrigger value="frontend">Frontend</TabsTrigger>
@@ -307,21 +305,21 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Section */}
-      <section style={{ maxWidth: '64rem', margin: '0 auto', padding: '5rem 1.5rem', borderTop: '1px solid rgb(226, 232, 240)', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '1.875rem', fontWeight: 'bold', color: 'rgb(15, 23, 42)', marginBottom: '1.5rem' }}>함께 일하고 싶으신가요?</h2>
-        <p style={{ color: 'rgb(71, 85, 105)', marginBottom: '2rem', maxWidth: '42rem', margin: '0 auto 2rem' }}>
+      <section className="mx-auto max-w-5xl border-t border-slate-200 px-6 py-20 text-center">
+        <h2 className="mb-6 text-3xl font-bold text-slate-900">함께 일하고 싶으신가요?</h2>
+        <p className="mx-auto mb-8 max-w-3xl leading-7 text-slate-600">
           새로운 프로젝트나 협업 기회에 항상 열려있습니다.
           편하게 연락주세요!
         </p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', justifyContent: 'center' }}>
-          <Button size="lg" asChild style={{ width: '100%', maxWidth: '15rem', margin: '0 auto' }}>
-            <a href="mailto:2sora71@gmail.com">
-              <Mail style={{ marginRight: '0.5rem', width: '1rem', height: '1rem' }} />
+        <div className="mx-auto flex w-full max-w-[38rem] flex-col items-center justify-center gap-4 sm:flex-row">
+          <Button size="lg" asChild className="w-full max-w-[15rem]">
+            <a href="mailto:2sora71@gmail.com" className="inline-flex items-center justify-center gap-2">
+              <Mail className="h-4 w-4" />
               이메일 보내기
             </a>
           </Button>
-          <Button size="lg" variant="outline" asChild style={{ width: '100%', maxWidth: '15rem', margin: '0 auto' }}>
-            <a href="tel:01040007968">
+          <Button size="lg" variant="outline" asChild className="w-full max-w-[15rem]">
+            <a href="tel:01040007968" className="inline-flex items-center justify-center">
               전화하기
             </a>
           </Button>
@@ -329,10 +327,10 @@ export default function Portfolio() {
       </section>
 
       {/* Footer */}
-      <footer style={{ borderTop: '1px solid rgb(226, 232, 240)', background: 'rgb(15, 23, 42)', color: 'white', padding: '3rem 1.5rem', textAlign: 'center' }}>
-        <div style={{ maxWidth: '64rem', margin: '0 auto' }}>
-          <p style={{ marginBottom: '1rem' }}>© 2026 Lee Sora. All rights reserved.</p>
-          <p style={{ color: 'rgb(148, 163, 184)' }}>디자인을 정확하게 구현하는 웹 퍼블리셔</p>
+      <footer className="border-t border-slate-200 bg-slate-950 px-6 py-12 text-center text-white">
+        <div className="mx-auto max-w-5xl">
+          <p className="mb-4">© 2026 Lee Sora. All rights reserved.</p>
+          <p className="text-slate-400">디자인을 정확하게 구현하는 웹 퍼블리셔</p>
         </div>
       </footer>
     </div>
