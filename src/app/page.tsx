@@ -19,7 +19,7 @@ const PROJECTS = [
     period: '2026.03 ~ 진행중',
     company: '더이앤엠주식회사',
     description: '사용자 경험 개선을 위한 메인 페이지 리뉴얼, 반응형 레이아웃 구현 및 크로스 브라우징 대응',
-    tech: ['React.js', 'TypeScript', 'Tailwind CSS', 'shadcn/ui'],
+    tech: ['React.js', 'Tailwind CSS'],
     impact: '플랫폼 전체 사용자 경험 향상'
   },
   {
@@ -27,7 +27,7 @@ const PROJECTS = [
     period: '2026.04 ~ 진행중',
     company: '더이앤엠주식회사',
     description: '신규 백오피스 시스템 UI/UX 구현 및 반응형 디자인 적용',
-    tech: ['React.js', 'TypeScript', 'Tailwind CSS'],
+    tech: ['React.js', 'Tailwind CSS', 'shadcn/ui'],
     impact: '관리자 업무 효율성 30% 증대'
   },
   {
@@ -35,7 +35,7 @@ const PROJECTS = [
     period: '2025.07 ~ 2025.12',
     company: '더이앤엠주식회사',
     description: '사용자 편의성 개선을 위한 UI 재설계, 인터랙션 효과 추가로 사용성 향상',
-    tech: ['React.js', 'CSS3', 'JavaScript'],
+    tech: ['React.js', 'CSS3', 'JavaScript', 'html5'],
     impact: '사용자 만족도 42% 향상'
   },
   {
@@ -255,7 +255,7 @@ export default function Portfolio() {
       <section id="skills" className="mx-auto max-w-5xl border-t border-slate-200 px-6 py-20">
         <h2 className="mb-12 text-3xl font-bold text-slate-900">기술 스택</h2>
         <Tabs defaultValue="frontend" className="w-full">
-          <TabsList className="grid w-full grid-cols-1 gap-2 mb-8 sm:grid-cols-4">
+          <TabsList className="flex w-full gap-2 mb-8">
             <TabsTrigger value="frontend">Frontend</TabsTrigger>
             <TabsTrigger value="styling">Styling</TabsTrigger>
             <TabsTrigger value="tools">Tools</TabsTrigger>
@@ -263,7 +263,7 @@ export default function Portfolio() {
           </TabsList>
           
           <TabsContent value="frontend">
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 w-full">
               {SKILLS.frontend.map((skill, idx) => (
                 <Card key={idx} className="p-4 bg-gradient-to-br from-sky-100 via-sky-100 to-cyan-100 border border-sky-200">
                   <p className="font-medium text-slate-900">{skill}</p>
