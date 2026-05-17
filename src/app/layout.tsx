@@ -1,20 +1,25 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Noto_Sans, Playfair_Display } from "next/font/google";
-import "./globals.css";
-import { cn } from "@/lib/utils";
+import {
+  Inter,
+  Noto_Sans,
+  Playfair_Display,
+} from "next/font/google";
 
-const playfairDisplayHeading = Playfair_Display({subsets:['latin'],variable:'--font-heading'});
+import { cn } from "../lib/utils";
 
-const notoSans = Noto_Sans({subsets:['latin'],variable:'--font-sans'});
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const playfairDisplayHeading = Playfair_Display({
   subsets: ["latin"],
+  variable: "--font-heading",
+});
+
+const notoSans = Noto_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
@@ -29,10 +34,19 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", notoSans.variable, playfairDisplayHeading.variable)}
+      lang="ko"
+      className={cn(
+        "h-full",
+        "antialiased",
+        "font-sans",
+        inter.variable,
+        notoSans.variable,
+        playfairDisplayHeading.variable
+      )}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+      </body>
     </html>
   );
 }
