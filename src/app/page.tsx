@@ -402,7 +402,11 @@ export default function Portfolio() {
                     <img
                       src={selectedProject.images[selectedImageIndex]}
                       alt={`${selectedProject.title} ${selectedImageIndex + 1}`}
-                      className="h-[min(60vh,32rem)] w-full object-contain"
+                      draggable="false"
+                      onDragStart={(event) => event.preventDefault()}
+                      onDoubleClick={(event) => event.preventDefault()}
+                      onTouchStart={(event) => event.preventDefault()}
+                      className="h-[min(60vh,32rem)] w-full object-contain touch-none select-none"
                     />
                   ) : (
                     <div className="flex h-[min(60vh,32rem)] items-center justify-center px-6 py-10 text-center text-sm text-slate-600">
