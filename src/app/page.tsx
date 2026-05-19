@@ -88,9 +88,9 @@ const PROJECTS = [
     description: '국내 기관(ex. 강원도 교육청)과 해외 수출용 등 제공에 따라 다른 UI 구현',
     tech: ['HTML5', 'CSS3', 'jQuery', 'chart.js'],
     images: [
-      '/images/work/project2-1.png',
-      '/images/work/project2-2.png',
-      '/images/work/project2-5.png'
+      '/images/work/project2-1.jpg',
+      '/images/work/project2-2.jpg',
+      '/images/work/project2-5.jpg'
     ],
     // impact: '월 활성 사용자 5만명 이상'
   },
