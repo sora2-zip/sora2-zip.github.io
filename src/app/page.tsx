@@ -204,7 +204,7 @@ export default function Portfolio() {
             프로젝트 보기
           </Button>
           <Button size="lg" variant="outline" asChild className="w-full max-w-[15rem]">
-            <a href="mailto:2sora71@gmail.com" className="inline-flex items-center justify-center gap-2">
+            <a href="mailto:sora2.zip@gmail.com" className="inline-flex items-center justify-center gap-2">
               <Mail className="h-4 w-4" />
               이메일 문의
             </a>
@@ -246,8 +246,8 @@ export default function Portfolio() {
               <div className="mb-4 text-6xl font-bold text-sky-700">7+</div>
               <div className="text-xl font-semibold text-slate-900">Years of Experience</div>
               <div className="mt-4 text-slate-600">
-                <div>5개 회사</div>
-                <div>50+ 프로젝트</div>
+                <div>4개 회사</div>
+                <div>20+ 프로젝트</div>
               </div>
             </div>
           </div>
@@ -462,7 +462,7 @@ export default function Portfolio() {
         </p>
         <div className="mx-auto flex w-full max-w-[38rem] flex-col items-center justify-center gap-4 sm:flex-row">
           <Button size="lg" asChild className="w-full max-w-[15rem]">
-            <a href="mailto:2sora71@gmail.com" className="inline-flex items-center justify-center gap-2">
+            <a href="mailto:sora2.zip@gmail.com" className="inline-flex items-center justify-center gap-2">
               <Mail className="h-4 w-4" />
               이메일 보내기
             </a>
