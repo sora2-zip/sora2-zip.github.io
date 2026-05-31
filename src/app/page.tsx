@@ -24,10 +24,7 @@ const PROJECTS = [
     company: '더이앤엠주식회사',
     description: '사용자 경험 개선을 위한 메인 페이지 리뉴얼, 반응형 레이아웃 구현 및 크로스 브라우징 대응',
     tech: ['React.js', 'Tailwind CSS'],
-    images: [
-      // 'https://images.unsplash.com/photo-1522204502355-30e4b6b58a50?auto=format&fit=crop&w=1200&q=80',
-      // 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80',
-    ],
+    images: [],
     // impact: '플랫폼 전체 사용자 경험 향상'
   },
   {
@@ -36,9 +33,7 @@ const PROJECTS = [
     company: '더이앤엠주식회사',
     description: '신규 백오피스 시스템 UI/UX 구현 및 반응형 디자인 적용',
     tech: ['React.js', 'Tailwind CSS', 'shadcn/ui'],
-    images: [
-      // 'https://images.unsplash.com/photo-1522204502355-30e4b6b58a50?auto=format&fit=crop&w=1200&q=80',
-    ],
+    images: []
     // impact: '관리자 업무 효율성 30% 증대'
   },
   {
@@ -74,7 +69,7 @@ const PROJECTS = [
     title: '슈퍼브이 서비스 (Tablet)',
     period: '2022.04 ~ 2024.04',
     company: '그로비교육',
-    description: 'Vue.js 기반 개인화 학습 관리 웹뷰 페이지 개발, 학생용 대시보드 UI 구현',
+    description: 'Vue.js 기반 개인화 학습 및 관리 웹뷰 페이지 개발, 학생용 대시보드 UI 구현',
     tech: ['Vue.js', 'HTML5', 'CSS3/SCSS', 'Chart.js'],
     images: [
       '/images/work/project1-2.png',
@@ -114,7 +109,9 @@ const EXPERIENCE = [
     highlights: [
       '플랫폼 웹/앱 서비스 UI 개발 및 유지보수',
       '월간 이벤트 페이지 마크업 및 기능 구현',
-      '신규 서비스(에이전트 관리 어드민) UI 개발'
+      '신규 서비스(에이전트 관리 어드민) UI 개발',
+      '코인, 상품권 사용 관련 시스템 UI 리뉴얼 작업',
+      ''
     ]
   },
   {
@@ -196,7 +193,7 @@ export default function Portfolio() {
           </span>
         </h1>
         <p className="mx-auto mb-8 max-w-3xl text-lg leading-8 text-slate-600">
-          7년 이상의 경험으로 사용자 중심의 웹 인터페이스를 설계하고 구현합니다.<br />
+          6년 이상의 경험으로 사용자 중심의 웹 인터페이스를 설계하고 구현합니다.<br />
           React, Vue.js, TypeScript를 활용한 현대적인 웹 개발을 전문으로 합니다.
         </p>
         <div className="mx-auto mb-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -204,7 +201,7 @@ export default function Portfolio() {
             프로젝트 보기
           </Button>
           <Button size="lg" variant="outline" asChild className="w-full max-w-[15rem]">
-            <a href="mailto:2sora71@gmail.com" className="inline-flex items-center justify-center gap-2">
+            <a href="mailto:sora2.zip@gmail.com" className="inline-flex items-center justify-center gap-2">
               <Mail className="h-4 w-4" />
               이메일 문의
             </a>
@@ -226,7 +223,7 @@ export default function Portfolio() {
               안녕하세요. 웹 퍼블리셔 이소라입니다.
             </p>
             <p className="mb-4 leading-7 text-slate-600">
-              강원대학교 방송영상학과를 졸업했으며, 7년 이상의 웹 개발 경험을 갖고 있습니다.
+              강원대학교 방송영상학과를 졸업했으며, 6년 이상의 웹 개발 경험을 갖고 있습니다.
               플랫폼 UI 개발, 어드민 시스템 구축, 반응형 웹 디자인 등 다양한 프로젝트를 통해
               사용자 중심의 인터페이스 설계 능력을 키워왔습니다.
             </p>
@@ -243,7 +240,7 @@ export default function Portfolio() {
           </div>
           <div className="flex h-80 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-100 to-cyan-100 p-8">
             <div className="text-center">
-              <div className="mb-4 text-6xl font-bold text-sky-700">7+</div>
+              <div className="mb-4 text-6xl font-bold text-sky-700">6+</div>
               <div className="text-xl font-semibold text-slate-900">Years of Experience</div>
               <div className="mt-4 text-slate-600">
                 <div>5개 회사</div>
