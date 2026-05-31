@@ -11,9 +11,9 @@ import { Mail, ExternalLink, ChevronDown, X, ChevronLeft, ChevronRight } from 'l
 
 
 const SKILLS = {
-  frontend: ['React.js', 'Vue.js', 'JavaScript (ES5+)', 'HTML5', 'CSS3/SCSS'],
-  styling: ['Tailwind CSS', 'CSS Modules', 'styled-components', 'shadcn/ui'],
-  tools: ['Git/GitLab', 'Figma', 'Jenkins', 'Zeplin', 'FTP'],
+  frontend: ['React.js', 'Vue.js', 'JavaScript', 'HTML5', 'jQuery'],
+  styling: ['CSS3/SCSS', 'Tailwind CSS', 'CSS Modules', 'styled-components', 'shadcn/ui'],
+  tools: ['Git/GitLab', 'Figma', 'Jenkins', 'Zeplin', 'FTP', 'Redmine', 'Swagger' ],
   design: ['Photoshop', 'UI/UX', '반응형 웹', '크로스 브라우징']
 }
 
@@ -107,13 +107,12 @@ const EXPERIENCE = [
     period: '2025.01 ~ 재직중',
     duration: '약 17개월',
     highlights: [
-      'React.js 기반 플랫폼 웹/앱 UI 개발 및 유지보수',
-      '월간 이벤트 페이지 마크업 및 기능 구현',
-      '신규 서비스(에이전트 관리 어드민) UI 개발',
-      '코인, 상품권 사용 시스템 UI 리뉴얼',
-      'shadcn/ui 기반 UI 라이브러리 도입 및 커스터마이징',
-      'Figma 디자인 시스템에 따른 UI 구현 및 크로스 브라우징 대응',
-      'WebView 최적화 및 반응형 디자인 적용'
+      'React 기반 라이브 플랫폼 웹/앱 서비스 UI 개발 및 유지보수',
+      '메인 화면, 결제 페이지, 코인 시스템, 채팅 UI 등 사용자 접점 화면 리뉴얼',
+      'PC 프로그램 내 모달/팝업 레이어 및 WebView 화면 UI 구현',
+      'Tailwind CSS, CSS Modules, styled-components를 활용한 스타일 구조화',
+      '월간 이벤트 페이지 템플릿화 및 반복 배포 대응',
+      '신규 에이전트 관리 어드민의 반응형 UI 및 컴포넌트 기반 화면 구현'
     ]
   },
   {
@@ -122,13 +121,11 @@ const EXPERIENCE = [
     period: '2022.04 ~ 2024.04',
     duration: '2년 1개월',
     highlights: [
-      '교육 서비스 웹/앱 UI 개발 및 유지보수',
-      '레거시 CSS 코드베이스 SCSS 마이그레이션',
-      'Chart.js를 활용한 데이터 시각화 대시보드 구현',
-      '공통 UI 컴포넌트 라이브러리 구축',
-      'Zeplin 디자인 시스템에 따른 UI 구현 및 크로스 브라우징 대응',
-      'WebView 최적화 및 반응형 디자인 적용',
-      'HTML5, Vue.js 기반 UI 개발'
+      'Vue.js 기반 교육 서비스 태블릿 WebView 및 모바일 앱 UI 개발',
+      '학생/학부모용 학습 현황, 스케줄, 콘텐츠 화면 구현',
+      '관리자 페이지 및 데이터 시각화 대시보드 UI 개발',
+      '레거시 CSS를 SCSS 구조로 전환하여 유지보수성 개선',
+      '반응형 웹, 태블릿, 모바일 환경에 맞춘 화면 최적화'
     ]
   },
   {
@@ -137,13 +134,11 @@ const EXPERIENCE = [
     period: '2018.03 ~ 2021.11',
     duration: '3년 9개월',
     highlights: [
-      '자체 교육 서비스 및 CMS 페이지 퍼블리싱',
-      '모바일 최적화 및 태블릿 최적화',
-      '교재 쇼핑몰, 온라인 영어 교육사이트 운영',
-      '국내 기관(ex. 강원도 교육청)과 해외 수출용 등 제공에 따라 다른 UI 구현',
-      'jQuery, Chart.js 등 라이브러리를 활용한 인터랙티브 UI 구현',
-      'App 내 웹뷰 페이지 디자인 및 UI 개발',
-      '하이브리드 앱 유지보수'
+      '영어교육 서비스 웹사이트, CMS, LMS, 전자도서관 화면 퍼블리싱',
+      '국내/해외 사용자 대상 다국어 UI 및 교육 콘텐츠 화면 구현',
+      '모바일/태블릿 앱 내 학습 화면 마크업 및 유지보수',
+      'jQuery, Chart.js 기반 인터랙션 및 데이터 화면 구현',
+      '운영 중인 교육 서비스의 오류 수정, 이벤트 관리, 콘텐츠 반영'
     ]
   }
 ]
@@ -192,19 +187,20 @@ export default function Portfolio() {
       <section className="mx-auto max-w-5xl px-6 py-24 text-center">
         <div className="mb-8 inline-block">
           <Badge variant="secondary" className="text-sm">
-            Web Publisher & Frontend Developer
+        Web Publisher & UI Developer
           </Badge>
         </div>
         <h1 className="mb-6 text-5xl font-bold leading-tight text-slate-900 sm:text-6xl md:text-7xl">
           디자인을 정확하게
           <br />
           <span className="bg-gradient-to-r from-sky-700 via-cyan-500 to-cyan-400 bg-clip-text text-transparent">
-            구현하는 개발자
+            구현하는 퍼블리셔
           </span>
         </h1>
         <p className="mx-auto mb-8 max-w-3xl text-lg leading-8 text-slate-600">
-          6년 이상의 경험으로 사용자 중심의 웹 인터페이스를 설계하고 구현합니다.<br />
-          React, Vue.js, TypeScript를 활용한 현대적인 웹 개발을 전문으로 합니다.
+          디자인 시안을 정확하게 구현하고, <br/>실제 서비스 운영에 적합한 반응형 UI와 WebView 화면을 구조화하는<br/>웹 퍼블리셔입니다. <br/>
+교육 서비스, 라이브 플랫폼, 관리자 시스템에서 다양한 사용자 화면을 개발·유지보수해왔으며,<br/>
+React/Vue 기반 UI 구현과 CSS 구조화에 강점이 있습니다.
         </p>
         <div className="mx-auto mb-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button size="lg" onClick={() => scrollToSection('projects')} className="w-full max-w-[15rem]">
@@ -233,9 +229,10 @@ export default function Portfolio() {
               안녕하세요. 웹 퍼블리셔 이소라입니다.
             </p>
             <p className="mb-4 leading-7 text-slate-600">
-              강원대학교 방송영상학과를 졸업했으며, 6년 이상의 웹 개발 경험을 갖고 있습니다.
-              플랫폼 UI 개발, 어드민 시스템 구축, 반응형 웹 디자인 등 다양한 프로젝트를 통해
-              사용자 중심의 인터페이스 설계 능력을 키워왔습니다.
+          7년 이상의 웹 퍼블리싱 경험을 바탕으로 교육, 라이브 플랫폼, 관리자 서비스의 웹/앱 UI를 구현해왔습니다.
+HTML, CSS/SCSS, JavaScript, Vue.js, React를 활용해 반응형 웹, WebView, 백오피스 화면을 개발했으며,
+디자인 시안을 정확하게 구현하는 동시에 운영과 유지보수를 고려한 UI 구조화를 중요하게 생각합니다.
+최근에는 React, TypeScript, Tailwind CSS, shadcn/ui 기반의 포트폴리오와 컴포넌트 패턴을 정리하며 프론트엔드 개발 역량을 확장하고 있습니다.
             </p>
             <p className="mb-6 leading-7 text-slate-600">
               현재 더이앤엠주식회사에서 기술개발본부 연구원으로 근무 중이며,
@@ -250,7 +247,7 @@ export default function Portfolio() {
           </div>
           <div className="flex h-80 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-100 to-cyan-100 p-8">
             <div className="text-center">
-              <div className="mb-4 text-6xl font-bold text-sky-700">6+</div>
+              <div className="mb-4 text-6xl font-bold text-sky-700">7+</div>
               <div className="text-xl font-semibold text-slate-900">Years of Experience</div>
               <div className="mt-4 text-slate-600">
                 <div>4개 회사</div>
@@ -486,7 +483,7 @@ export default function Portfolio() {
       <footer className="border-t border-slate-200 bg-slate-950 px-6 py-12 text-center text-white">
         <div className="mx-auto max-w-5xl">
           <p className="mb-4">© 2026 Lee Sora. All rights reserved.</p>
-          <p className="text-slate-400">디자인을 정확하게 구현하는 웹 퍼블리셔</p>
+          <p className="text-slate-400">디자인을 정확하게 구현하고, 운영 환경에 맞는 반응형 UI를 구조화하는 웹 퍼블리셔</p>
         </div>
       </footer>
     </div>
