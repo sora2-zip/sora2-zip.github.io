@@ -515,11 +515,11 @@ export default function Portfolio() {
       <section id="skills" className="mx-auto max-w-5xl border-t border-slate-200 px-6 py-20">
         <h2 className="mb-12 text-3xl font-bold text-slate-900">기술 스택</h2>
         <Tabs defaultValue="core" className="w-full">
-          <TabsList className="flex w-full gap-2 mb-8">
-            <TabsTrigger value="core">Core UI</TabsTrigger>
-            <TabsTrigger value="production">Production</TabsTrigger>
-            <TabsTrigger value="ui-development">UI Development</TabsTrigger>
-            <TabsTrigger value="tools">Tools</TabsTrigger>
+          <TabsList className="mb-8 grid !h-auto w-full grid-cols-2 gap-2 sm:grid-cols-4">
+            <TabsTrigger value="core" className="min-h-10 px-3 text-[11px] sm:text-xs">Core UI</TabsTrigger>
+            <TabsTrigger value="production" className="min-h-10 px-3 text-[11px] sm:text-xs">Production</TabsTrigger>
+            <TabsTrigger value="ui-development" className="min-h-10 px-3 text-[11px] sm:text-xs">UI Development</TabsTrigger>
+            <TabsTrigger value="tools" className="min-h-10 px-3 text-[11px] sm:text-xs">Tools</TabsTrigger>
           </TabsList>
           
           <TabsContent value="core">
