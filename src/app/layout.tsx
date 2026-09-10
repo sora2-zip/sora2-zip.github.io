@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import {
   Inter,
   Noto_Sans,
@@ -25,11 +25,12 @@ const notoSans = Noto_Sans({
 export const metadata: Metadata = {
   title: "이소라 - 포트폴리오",
   description: "퍼블리셔 이소라의 포트폴리오 웹사이트입니다. 다양한 프로젝트 경험과 기술 스택을 소개합니다.",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
