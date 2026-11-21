@@ -1,7 +1,8 @@
 'use client'
 /* eslint-disable @next/next/no-img-element */
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { formatDuration, getCurrentMonthIndex, getDurationMonths, getMonthIndex } from '../lib/experience'
 import { Button } from '../components/ui/button'
 import { Card } from '../components/ui/card'
 import { Badge } from '../components/ui/badge'
@@ -185,8 +186,8 @@ const EXPERIENCE = [
   {
     role: '기술개발본부 연구원',
     company: '더이앤엠주식회사',
-    period: '2025.01 ~ 재직중',
-    duration: '재직중',
+    start: '2025.01',
+    end: null,
     highlights: [
       '라이브 플랫폼 웹/앱 서비스 UI 개발 및 유지보수',
       'React 기반 서비스의 UI 컴포넌트 구현 및 기존 기능 개선',
@@ -201,8 +202,8 @@ const EXPERIENCE = [
   {
     role: '기술개발팀 대리',
     company: '그로비교육',
-    period: '2022.04 ~ 2024.04',
-    duration: '2년 1개월',
+    start: '2022.04',
+    end: '2024.04',
     highlights: [
       'Vue.js 기반 교육 서비스 태블릿 WebView 및 모바일 앱 UI 개발',
       '학생/학부모용 학습 현황, 스케줄, 콘텐츠 화면 구현',
@@ -216,8 +217,8 @@ const EXPERIENCE = [
   {
     role: '웹 퍼블리셔',
     company: '쌤투쌤',
-    period: '2021.11 ~ 2021.12',
-    duration: '2개월',
+    start: '2021.11',
+    end: '2021.12',
     highlights: [
       '사이트 UI 오류 수정 및 유지보수'
     ]
@@ -225,8 +226,8 @@ const EXPERIENCE = [
   {
     role: '웹 퍼블리셔 (R&D)',
     company: '주식회사이퓨쳐',
-    period: '2018.03 ~ 2021.11',
-    duration: '3년 9개월',
+    start: '2018.03',
+    end: '2021.11',
     highlights: [
       '영어교육 서비스 웹사이트, CMS, LMS, 전자도서관 화면 퍼블리싱',
       '국내/해외 사용자 대상 다국어 UI 및 교육 콘텐츠 화면 구현',
@@ -242,6 +243,24 @@ const EXPERIENCE = [
 export default function Portfolio() {
   const [selectedProject, setSelectedProject] = useState<typeof ALL_PROJECTS[number] | null>(null)
   const [selectedImageIndex, setSelectedImageIndex] = useState(0)
+  const [currentMonth, setCurrentMonth] = useState<number | null>(null)
+
+  useEffect(() => {
+    const updateMonth = () => setCurrentMonth(getCurrentMonthIndex())
+    updateMonth()
+    const interval = window.setInterval(updateMonth, 60_000)
+    window.addEventListener('focus', updateMonth)
+    return () => {
+      window.clearInterval(interval)
+      window.removeEventListener('focus', updateMonth)
+    }
+  }, [])
+
+  const totalMonths = currentMonth === null ? null : EXPERIENCE.reduce(
+    (total, exp) => total + getDurationMonths(exp.start, exp.end ? getMonthIndex(exp.end) : currentMonth),
+    0,
+  )
+  const careerDuration = totalMonths === null ? null : formatDuration(totalMonths)
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
@@ -296,7 +315,7 @@ export default function Portfolio() {
           </span>
         </h1>
         <p className="mx-auto mb-8 max-w-3xl text-lg leading-8 text-slate-600">
-          7년 이상 다양한 웹·앱 서비스를 운영하며 반응형 UI, WebView, 관리자 화면을 구현해온 UI Developer입니다.
+          {careerDuration ? `${careerDuration} 동안 ` : ''}다양한 웹·앱 서비스를 운영하며 반응형 UI, WebView, 관리자 화면을 구현해온 UI Developer입니다.
           HTML/CSS 기반의 탄탄한 퍼블리싱 경험을 바탕으로 React·Vue 환경에서 컴포넌트 기반 UI 개발까지 영역을 확장하고 있습니다.
         </p>
         <div className="mx-auto mb-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -326,7 +345,7 @@ export default function Portfolio() {
               안녕하세요. 웹 퍼블리셔 이소라입니다.
             </p>
             <p className="mb-4 leading-7 text-slate-600">
-              7년 이상의 실무 경험을 바탕으로 교육 서비스, 라이브 플랫폼, WebView, 관리자 시스템 등 다양한 웹·앱 UI를 구현해왔습니다.
+              {careerDuration ? `${careerDuration}의 실무 경험` : '실무 경험'}을 바탕으로 교육 서비스, 라이브 플랫폼, WebView, 관리자 시스템 등 다양한 웹·앱 UI를 구현해왔습니다.
               HTML, CSS/SCSS, JavaScript, Vue.js, React를 활용해 디자인을 정확하게 화면에 옮기고, 운영과 유지보수를 고려한 UI 구조를 만드는 데 강점이 있습니다.
             </p>
             <p className="mb-6 leading-7 text-slate-600">
@@ -340,7 +359,7 @@ export default function Portfolio() {
           </div>
           <div className="flex h-80 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-100 to-cyan-100 p-8">
             <div className="text-center">
-              <div className="mb-4 text-6xl font-bold text-sky-700">7년 8개월</div>
+              <div className="mb-4 text-6xl font-bold text-sky-700">{careerDuration ?? '계산 중…'}</div>
               <div className="text-xl font-semibold text-slate-900">Years of Experience</div>
               <div className="mt-4 flex flex-wrap justify-center gap-2 text-sm text-slate-600">
                 <span className="rounded-full bg-white/70 px-3 py-1">Web / App UI</span>
@@ -447,8 +466,10 @@ export default function Portfolio() {
                   <p className="font-medium text-sky-600">{exp.company}</p>
                 </div>
                 <div className="text-right text-sm text-slate-600">
-                  <div>{exp.period}</div>
-                  <div className="text-slate-500">{exp.duration}</div>
+                  <div>{exp.start} ~ {exp.end ?? '재직중'}</div>
+                  <div className="text-slate-500">{exp.end
+                    ? formatDuration(getDurationMonths(exp.start, getMonthIndex(exp.end)))
+                    : currentMonth === null ? '재직중' : `${formatDuration(getDurationMonths(exp.start, currentMonth))} · 재직중`}</div>
                 </div>
               </div>
               <ul className="flex flex-col gap-2">
